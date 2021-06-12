@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCookies } from 'react-cookie';
 import Form from './Form';
 import { signUserIn } from '../../../functions/auth';
 
-const Login = ({history}) => {
+export default function Login({history}) {
   const [ values, setValues ] = useState({email: '', password: ''});
   const [ loading, setLoading ] = useState(false);
   const [ error, setError ] = useState(null);
-  const [ cookies, setCookie ] = useCookies();
   const dispatch = useDispatch();
   
   const handleChange = (e) => {
@@ -21,14 +19,17 @@ const Login = ({history}) => {
     setLoading(true);
     signUserIn(values)
       .then(res => {
+        const { userId, email, token } = res.data;
+        localStorage.setItem('token', token);
         setLoading(false);
-        setCookie('token', res.data.token);
-        dispatch({type: 'AUTH_SUCCESS', payload: {userId: res.data.userId, email: res.data.email}});
+        dispatch({type: 'AUTH_SUCCESS', payload: {userId, email}});
         history.push('/');
       })
       .catch(err => {
         setLoading(false);
-        setError({message: err.response.data.message});
+        err.response 
+        ? setError({message: err.response.data.message})
+        : setError({message: 'Unable to connect to server, try again later'})
       })
   };
 
@@ -41,5 +42,3 @@ const Login = ({history}) => {
     />
   );
 }
-
-export default Login;

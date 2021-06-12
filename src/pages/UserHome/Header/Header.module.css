@@ -1,0 +1,71 @@
+.container {
+    position: relative;
+    height: 25vh;
+    background-color: rgb(68, 171, 189);
+    padding: 20px;
+    color: white;
+    background: url("https://i.imgur.com/Cm9f96U.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 90%;
+}
+
+.container h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.container span {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-left: 12px;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+@media all and (min-width: 768px) {
+    .container {
+        height: 35vh;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
+    .container span {
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+@media all and (min-width: 1000px) {
+    .container {
+        height: 40vh;
+
+    }
+
+    .container h1 {
+        font-size: 26px;
+    }
+
+    .container a {
+        font-size: 20px;
+    }
+
+    .container span {
+        font-size: 30px;
+    }
+}

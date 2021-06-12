@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: theme.palette.secondary.main,
+    '&:hover' : {
+      backgroundColor: theme.palette.secondary.main
+    }
   },
   mBottom: {
     marginBottom: 10 
@@ -28,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   alert: {
     marginTop: 10,
     marginBottom: 5
+  },
+  link: {
+    color: theme.palette.text.main
   }
 }));
 
@@ -93,10 +100,10 @@ const Form = ({handleChange, handleSubmit, loading, alert, values}) => {
           >
             Sign Up
           </Button>
-          {loading && <LinearProgress color="secondary" className={classes.mBottom}/>}
+          {loading && <LinearProgress color='secondary' className={classes.mBottom}/>}
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to='/login'>
+              <Link to='/login' className={classes.link}>
                 Already have an account? Sign In
               </Link>
             </Grid>

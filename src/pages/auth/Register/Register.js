@@ -4,7 +4,7 @@ import { signUserUp } from '../../../functions/auth';
 
 const INITIAL_VALUES = {email: '', password: '', confirmPassword: ''};
 
-const Register = () => {
+export default function Register() {
   const [ values, setValues ] = useState(INITIAL_VALUES);
   const [ loading, setLoading ] = useState(false);
   const [ alert, setAlert ] = useState(null);
@@ -29,7 +29,9 @@ const Register = () => {
       })
       .catch(err => {
         setLoading(false);
-        setAlert({status: 'error', message: err.response.data.message});
+        err.response 
+        ? setAlert({status: 'error', message: err.response.data.message})
+        : setAlert({status: 'error', message: 'Unable to connect to server, try again later'})
       });
   };
 
@@ -42,6 +44,4 @@ const Register = () => {
       values={values}
     />
   );
-}
-
-export default Register;
+};

@@ -1,67 +1,61 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useCookies } from 'react-cookie';
 import { checkAuth } from './functions/auth';
-
 import Layout from './containers/Layout';
 import Loading from './pages/Loading/Loading';
 import Login from './pages/auth/Login/Login';
 import Register from './pages/auth/Register/Register';
+import UserHome from './pages/UserHome';
 
-const App = () => {
-  const auth = useSelector(state => state.auth);
+const ROUTES = {
+  noAuth: [
+    {path: '/login', component: Login},
+    {path: '/register', component: Register},
+    {path: '/', component: () => (<h1>Regular Home</h1>)}
+  ],
+  authed: [
+    {path: '/entry/:id', component: () =>(<h1>entry page</h1>)},
+    {path: '/', component: UserHome }
+  ]
+};
+
+export default function App() {
   const dispatch = useDispatch();
-  const [ cookies, setCookie, removeCookie ] = useCookies();
-
+  const auth = useSelector(state => state.auth);
+  
   useEffect(() => {
-    checkAuth(cookies.token)
+    checkAuth()
       .then(res => {
         console.log(res);
         dispatch({type: 'AUTH_SUCCESS', payload: res.data});
       })
       .catch(err => {
         console.log(err.response);
-        removeCookie('token');
         dispatch({type: 'AUTH_FALSE'});
       })
   }, []);
 
-  const setRoutes = () => {
-    if (auth) {
-      return [
-        <Route key='home' path='/' render={() => <h1>USER Home</h1>}/>
-      ]
-    } else {
-      return [
-        <Route key='login' path='/login' component={Login}/>,
-        <Route key='register' path='/register' component={Register} />,
-        <Route key='home' path='/' render={() => <h1>Home</h1>}/>
-      ]
-    };
-  }
+  const setRoutes = routeArray => 
+    routeArray.map(r => <Route path={r.path} component={r.component} key={r.path} exact/>);
 
   return <>
     {
-      auth === null ? 
-      <Loading variant='opaque' color='secondary'/>
-      : 
-      <Layout>
-        <Switch>
-          {setRoutes()}
-        </Switch>  
-      </Layout>
+      auth === null 
+      ? <Loading variant='opaque' color='secondary'/>
+      : <Layout>
+          <Switch>
+            {setRoutes(auth ? ROUTES.authed : ROUTES.noAuth)}
+            <Redirect to='/'/>
+          </Switch>  
+        </Layout>
     }
   </>
 };
 
-export default App;
+// refactor appbar
+// global no connection
+// uni-cookies
 
-
-// log out
-
-// user protected routes
 // Side bar links (user)
 
-
-// refactor appbar

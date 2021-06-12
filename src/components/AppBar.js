@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { useCookies } from 'react-cookie';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Drawer, Toolbar, Typography, Button, IconButton, Menu, MenuItem, List, ListItem, ListItemText } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -19,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerList: {
         width: 250
+    },
+    appBar: {
+        backgroundColor: 'white',
+        color: 'black'
     }
 }));
 
@@ -27,14 +30,15 @@ const ABar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const auth = useSelector(state => state.auth);
-    const [ cookies, setCookie, removeCookies] = useCookies();
+
     const [ opened, setOpened ] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const handleLogout = () => {
         dispatch({type: 'AUTH_FALSE'});
-        removeCookies('token');
+        setAnchorEl(null);
+        window.localStorage.removeItem('token');
     }
 
     const handleDrawerClick = (path) => {
@@ -59,7 +63,7 @@ const ABar = () => {
                 </List>
             </div>
         </Drawer>
-        <AppBar position='static'>
+        <AppBar position='static' className={classes.appBar}>
             <Toolbar>
                 <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='menu' onClick={() => setOpened(true)}>
                     <MenuIcon />
