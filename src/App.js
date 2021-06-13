@@ -15,7 +15,7 @@ const ROUTES = {
     {path: '/', component: () => (<h1>Regular Home</h1>)}
   ],
   authed: [
-    {path: '/entry/:id', component: () =>(<h1>entry page</h1>)},
+    {path: '/entry/:id', component: ({match}) =>(<h1>{match.params.id}</h1>)},
     {path: '/', component: UserHome }
   ]
 };

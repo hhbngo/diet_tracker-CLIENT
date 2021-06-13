@@ -1,0 +1,12 @@
+@media all and (min-width: 1000px) {
+    .wrapper {
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    .pagination {
+        width: max-content;
+        margin-left: auto;
+        margin-right: 50px;
+    }
+}

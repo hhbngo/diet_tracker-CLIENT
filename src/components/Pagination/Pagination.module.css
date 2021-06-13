@@ -4,7 +4,6 @@
     width: 100%;
     padding: 30px 10px;
     box-sizing: border-box;
-    width: 100%;
     justify-content: center;
     margin: 0 auto;
     align-items: center;
@@ -30,6 +29,7 @@
 .active {
     border: 2px solid #a9d3a3;
     color: #a9d3a3;
+    box-shadow: none;
 }
 
 .cover {

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import classes from './index.module.css';
 import Header from './Header/Header';
 import Main from './Main/Main';
 import Pagination from '../../components/Pagination/Pagination';
@@ -7,7 +8,7 @@ import { createEntrie, getEntries } from '../../functions/userHome';
 export default function UserHome({history}) {
     const [ loading, setLoading ] = useState(false);
     const [ entries, setEntries ] = useState([]);
-    const [ totalPages, setTotalPages ] = useState(0);
+    const [ totalPages, setTotalPages ] = useState(1);
     const [ page, setPage ] = useState(1);
 
     useEffect(() => {
@@ -20,7 +21,8 @@ export default function UserHome({history}) {
         .then(res => {
             setLoading(false);
             const {pageEntries, totalEntries} = res.data;
-            setTotalPages(Math.ceil(totalEntries / 4));
+            const total = Math.max(1, Math.ceil(totalEntries / 4)); 
+            setTotalPages(total);
             setEntries(pageEntries.reverse());
         })
         .catch(err => {
@@ -48,7 +50,7 @@ export default function UserHome({history}) {
 
     const handleEntryClick = id => history.push('/entry/'+id);
 
-    return <>
+    return <main>
         <Header/>
         <Main 
             loading={loading}
@@ -56,13 +58,17 @@ export default function UserHome({history}) {
             handleAddEntry={handleAddEntry}
             handleEntryClick={handleEntryClick}
         />
-        <Pagination
-            loading={loading}
-            currentPage={page} 
-            totalPages={totalPages} 
-            handlePageChange={handlePageChange}
-        />
-    </>
+        <div className={classes.wrapper}>
+            <div className={classes.pagination}>
+                <Pagination
+                    loading={loading}
+                    currentPage={page} 
+                    totalPages={totalPages} 
+                    handlePageChange={handlePageChange}
+                />
+            </div>
+        </div>
+    </main>
 };
 
 // front: change pagination +
