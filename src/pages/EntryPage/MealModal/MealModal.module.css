@@ -1,0 +1,179 @@
+.container {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow:
+        0px 3px 1px -2px rgb(0 0 0 / 20%),
+        0px 2px 2px 0px rgb(0 0 0 / 14%),
+        0px 1px 5px 0px rgb(0 0 0 / 12%);
+    box-sizing: border-box;
+    height: clamp(400px, 70vh, 560px);
+    margin: -10% auto 0;
+    padding: 10px 35px;
+    width: clamp(300px, 85%, 600px);
+    transform: translateY(100vh);
+    transition: all ease 0.4s;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.foodList {
+    height: clamp(100px, 60%, 220px);
+    margin: 30px auto 15px;
+    overflow-y: scroll;
+    border-right: 1px solid #eeeeee;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+
+.foodList::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+    background-color: white;
+}
+
+.foodList::-webkit-scrollbar-thumb {
+    background-color: #C8E9C3;
+    border-radius: 3px;
+}
+
+.add_btn {
+    width: max-content;
+    margin: 0 auto;
+    backface-visibility: hidden;
+
+}
+
+.add_btn button {
+    background-color: white;
+    border: 1px dashed #B9B6B6;
+    border-radius: 5px;
+    color: rgb(58, 58, 58);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px;
+    margin: 0 auto;
+    width: 140px;
+    margin: 0 auto;
+    margin-right: 2px;
+    transition: transform 0.2s;
+}
+
+.add_btn button:hover {
+    transform: translateY(-2px);
+}
+
+.g_btn {
+    border: 0;
+    color: #a9d3a3;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.g_disabled {
+    color: rgb(58, 58, 58);
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.g_hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.s {
+    opacity: 1;
+}
+
+.n {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.form_btn_container {
+    margin-left: 3px;
+}
+
+.label {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    width: clamp(100px, 100%, 420px);
+}
+
+.label:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.label_name {
+    margin-right: auto;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.label_weight {
+    color: #908A8A;
+}
+
+.label span {
+    color: #a9d3a3;
+    margin: 0 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.show {
+    animation: slideUp 0.3s 0.1s forwards;
+}
+
+.end_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.end_btn button {
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 12px;
+    width: 90px;
+    text-align: center;
+}
+
+.cancel {
+    color: #8a8585;
+    border: 1px solid #868484;
+    background-color: transparent;
+}
+
+.save {
+    color: white;
+    background-color: #a9d3a3;
+    border: 0;
+}
+
+.save_disabled {
+    border: 0;
+    color: white;
+    background-color: rgb(192, 189, 189);
+    cursor: not-allowed !important;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100vh);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

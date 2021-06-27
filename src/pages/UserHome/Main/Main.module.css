@@ -2,7 +2,7 @@
     position: relative;
     padding: 68px 18px 0;
     background: rgb(246, 248, 251);
-    min-height: 320px;
+    min-height: 328px;
 }
 
 .plus_circle {
@@ -53,9 +53,8 @@
 }
 
 .disabled {
-    background-color: rgb(214, 212, 212);
     pointer-events: none;
-    box-shadow: none;
+    cursor: not-allowed !important;
 }
 
 .container h1 {

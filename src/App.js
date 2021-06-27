@@ -7,6 +7,7 @@ import Loading from './pages/Loading/Loading';
 import Login from './pages/auth/Login/Login';
 import Register from './pages/auth/Register/Register';
 import UserHome from './pages/UserHome';
+import EntryPage from './pages/EntryPage';
 
 const ROUTES = {
   noAuth: [
@@ -15,7 +16,7 @@ const ROUTES = {
     {path: '/', component: () => (<h1>Regular Home</h1>)}
   ],
   authed: [
-    {path: '/entry/:id', component: ({match}) =>(<h1>{match.params.id}</h1>)},
+    {path: '/entry/:id', component: EntryPage},
     {path: '/', component: UserHome }
   ]
 };
@@ -54,8 +55,5 @@ export default function App() {
 };
 
 // refactor appbar
-// global no connection
-// uni-cookies
-
 // Side bar links (user)
 

@@ -1,0 +1,37 @@
+.container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 25px;
+    width: clamp(300px, 100%, 1400px);
+}
+
+.container p {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+    color: #454444;
+    margin-top: 5px;
+}
+
+.arrow_svg {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+
+@media all and (min-width: 1000px) {
+    .container {
+        margin-bottom: 42px;
+        margin-top: 10px;
+    }
+
+    .container p {
+        font-size: 36px;
+    }
+
+    .arrow_svg {
+        width: 40px;
+        height: 40px;
+    }
+}

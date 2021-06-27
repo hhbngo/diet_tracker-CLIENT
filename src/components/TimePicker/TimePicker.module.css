@@ -1,0 +1,13 @@
+.container p {
+    margin: 0 0 5px 0;
+    color: #908A8A;
+}
+
+.wrapper input[type="time"] {
+    font-family: inherit;
+    padding: 4px;
+    font-size: 16px;
+    border: 0;
+    border-bottom: 1px solid grey;
+    width: 150px;
+}

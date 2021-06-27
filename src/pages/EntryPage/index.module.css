@@ -1,0 +1,31 @@
+.container {
+    padding: 24px 18px;
+    position: relative;
+}
+
+.loading_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80vh;
+    width: 100%;
+}
+
+.no_entries {
+    color: #716E6E;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media all and (min-width: 1000px) {
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}

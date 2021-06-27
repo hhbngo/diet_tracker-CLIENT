@@ -1,0 +1,54 @@
+.plus_circle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #C8E9C3;
+    cursor: pointer;
+
+    box-shadow:
+        0px 3px 1px -2px rgb(0 0 0 / 20%),
+        0px 2px 2px 0px rgb(0 0 0 / 14%),
+        0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.plus_circle:active {
+    transform: scale(.95);
+    box-shadow: none;
+}
+
+.plus_circle::after,
+.plus_circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+}
+
+.plus_circle::before {
+    width: 3px;
+    margin: 12px auto;
+}
+
+.plus_circle::after {
+    height: 3px;
+    margin: auto 12px;
+}
+
+@media all and (min-width: 1000px) {
+    .plus_circle {
+        width: 54px;
+        height: 54px;
+    }
+
+    .plus_circle::before {
+        margin: 15px auto;
+    }
+
+    .plus_circle::after {
+        margin: auto 15px;
+    }
+}
