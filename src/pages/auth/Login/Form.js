@@ -1,7 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Avatar, Button, CssBaseline, TextField, Grid, Box, Typography, makeStyles, Container, LinearProgress} from '@material-ui/core';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  makeStyles,
+  Container,
+  LinearProgress,
+} from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,23 +33,23 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     backgroundColor: theme.palette.secondary.main,
-    '&:hover' : {
-      backgroundColor: theme.palette.secondary.main
-    } 
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.main,
+    },
   },
   mBottom: {
-    marginBottom: 10 
+    marginBottom: 10,
   },
   alert: {
     marginTop: 10,
-    marginBottom: 5
+    marginBottom: 5,
   },
   link: {
-    color: theme.palette.text.main
-  }
+    color: theme.palette.text.main,
+  },
 }));
 
-const Form = ({handleChange, handleSubmit, loading, error}) => {
+const Form = ({ handleChange, handleSubmit, loading, error }) => {
   const classes = useStyles();
 
   return (
@@ -52,7 +63,15 @@ const Form = ({handleChange, handleSubmit, loading, error}) => {
           Sign in
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
-          {error && <MuiAlert variant='filled' severity='error' className={classes.alert}>{error.message}!</MuiAlert>}
+          {error && (
+            <MuiAlert
+              variant="filled"
+              severity="error"
+              className={classes.alert}
+            >
+              {error.message}!
+            </MuiAlert>
+          )}
           <TextField
             variant="outlined"
             margin="normal"
@@ -62,8 +81,7 @@ const Form = ({handleChange, handleSubmit, loading, error}) => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            onChange={e => handleChange(e)}
-            autoFocus
+            onChange={(e) => handleChange(e)}
           />
           <TextField
             variant="outlined"
@@ -74,7 +92,7 @@ const Form = ({handleChange, handleSubmit, loading, error}) => {
             label="Password"
             type="password"
             id="password"
-            onChange={e => handleChange(e)}
+            onChange={(e) => handleChange(e)}
             autoComplete="current-password"
           />
           <Button
@@ -87,10 +105,12 @@ const Form = ({handleChange, handleSubmit, loading, error}) => {
           >
             Sign In
           </Button>
-          {loading && <LinearProgress color="secondary" className={classes.mBottom}/>}
-          <Grid container justify='flex-end'>
+          {loading && (
+            <LinearProgress color="secondary" className={classes.mBottom} />
+          )}
+          <Grid container justify="flex-end">
             <Grid item>
-              <Link to='/register' className={classes.link}>
+              <Link to="/register" className={classes.link}>
                 Don't have an account? Sign Up
               </Link>
             </Grid>
@@ -99,13 +119,12 @@ const Form = ({handleChange, handleSubmit, loading, error}) => {
       </div>
       <Box mt={8}>
         <Typography variant="body2" color="textSecondary" align="center">
-          {'Copyright © Hieu Ngo '}
-          {new Date().getFullYear()}
+          {'Created by Hieu Ngo '}
           {'.'}
         </Typography>
       </Box>
     </Container>
   );
-}
+};
 
 export default Form;

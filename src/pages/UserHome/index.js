@@ -27,7 +27,6 @@ export default function UserHome({history}) {
         })
         .catch(err => {
             setLoading(false);
-            console.log(err.response);
         })
     }
 
@@ -39,7 +38,6 @@ export default function UserHome({history}) {
         })
         .catch(err => {
             setLoading(false);
-            console.log(err.response);
         })
     };
 

@@ -7,7 +7,7 @@ import MealModal from './MealModal/MealModal';
 import EntryNav from './EntryNav/EntryNav';
 import SummaryHeader from './SummaryHeader/SummaryHeader';
 import Entries from './Entries/Entries';
-import {sumMealData, getEntry, createMeal, editMeal, deleteMeal } from '../../functions/entryPage';
+import {sumMealData, getEntry, createMeal, editMeal, deleteMeal, deleteEntry } from '../../functions/entryPage';
 import moment from 'moment';
 
 const initialModalData = () => ({
@@ -153,6 +153,18 @@ export default function EntryPage({history, match}) {
         } 
     };
 
+    const handleDeleteEntry = () => {
+        if (window.confirm('Delete this entry?')) {
+            deleteEntry(match.params.id)
+            .then(res => {
+                history.push('/');
+            })
+            .catch(err => {
+                refresh();
+            })
+        }
+    };
+
     return <main className={classes.container}>
         {loading ? 
             <div className={classes.loading_container}>
@@ -176,7 +188,10 @@ export default function EntryPage({history, match}) {
                 />
                 <div className={classes.wrapper}>
                     {entryData.meals.length === 0 
-                        ? <div className={classes.no_entries}>(No meals created yet!)</div>
+                        ? <div className={classes.no_entries}>
+                            (No meals created yet!)
+                            <p onClick={handleDeleteEntry}>Delete Entry</p>
+                        </div>
                         : <> 
                             <SummaryHeader
                                 selectedIndex={selectedIndex}
@@ -198,7 +213,6 @@ export default function EntryPage({history, match}) {
 };
 
 
-// redux save last page 
 
 
 //labels 1
@@ -207,3 +221,7 @@ export default function EntryPage({history, match}) {
 // save handler  1
 // useEffect / refresh 1
 // delete meal 1
+
+
+// redux save last page 
+// delete entry

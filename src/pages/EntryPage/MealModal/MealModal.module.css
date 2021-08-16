@@ -6,10 +6,10 @@
         0px 2px 2px 0px rgb(0 0 0 / 14%),
         0px 1px 5px 0px rgb(0 0 0 / 12%);
     box-sizing: border-box;
-    height: clamp(400px, 70vh, 560px);
-    margin: -10% auto 0;
+    height: clamp(400px, 80vh, 580px);
+    margin: -20% auto 0;
     padding: 10px 35px;
-    width: clamp(300px, 85%, 600px);
+    width: clamp(300px, 92%, 600px);
     transform: translateY(100vh);
     transition: all ease 0.4s;
 }
@@ -73,6 +73,8 @@
     background-color: transparent;
     font-size: 16px;
     margin-top: 15px;
+    padding: 0;
+    padding-right: 12px;
 }
 
 .g_disabled {
@@ -96,7 +98,7 @@
 }
 
 .form_btn_container {
-    margin-left: 3px;
+    margin-left: 0px;
 }
 
 .label {
@@ -175,5 +177,12 @@
 
     100% {
         transform: translateY(0);
+    }
+}
+
+@media all and (min-width: 900px) {
+    .container {
+        margin-top: -10%;
+        max-height: 570px;
     }
 }

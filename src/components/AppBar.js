@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Drawer, Toolbar, Typography, Button, IconButton, Menu, MenuItem, List, ListItem, ListItemText } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import { logout } from '../store/actions/auth';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,9 +37,8 @@ const ABar = () => {
     const open = Boolean(anchorEl);
 
     const handleLogout = () => {
-        dispatch({type: 'AUTH_FALSE'});
+        dispatch(logout());
         setAnchorEl(null);
-        window.localStorage.removeItem('token');
     }
 
     const handleDrawerClick = (path) => {
@@ -54,12 +54,17 @@ const ABar = () => {
                     <ListItem button onClick={() => handleDrawerClick('/')}>
                         <ListItemText primary='Home'/>
                     </ListItem>
-                    <ListItem button onClick={() => handleDrawerClick('/login')}>
-                        <ListItemText primary='Login'/>
-                    </ListItem>
-                    <ListItem button onClick={() => handleDrawerClick('/register')}>
-                        <ListItemText primary='Register'/>
-                    </ListItem>
+                    {!auth &&
+                        [
+                        <ListItem button key={1} onClick={() => handleDrawerClick('/login')}>
+                            <ListItemText primary='Login'/>
+                        </ListItem>,
+                        <ListItem button key={2} onClick={() => handleDrawerClick('/register')}>
+                            <ListItemText primary='Register'/>
+                        </ListItem>
+                        ]
+                    }
+
                 </List>
             </div>
         </Drawer>
@@ -97,7 +102,6 @@ const ABar = () => {
                             open={open}
                             onClose={() => setAnchorEl(null)}
                         >
-                        <MenuItem>My Account</MenuItem>
                         <MenuItem onClick={handleLogout}>Log Out</MenuItem>
                         </Menu>
                     </div>

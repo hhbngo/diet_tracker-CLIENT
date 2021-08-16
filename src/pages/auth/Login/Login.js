@@ -20,6 +20,9 @@ export default function Login({history}) {
     signUserIn(values)
       .then(res => {
         const { userId, email, token } = res.data;
+        const myDate = new Date();
+        const expiresIn = myDate.setHours(myDate.getHours() + 3); 
+        localStorage.setItem('expiresIn', expiresIn);
         localStorage.setItem('token', token);
         setLoading(false);
         dispatch({type: 'AUTH_SUCCESS', payload: {userId, email}});

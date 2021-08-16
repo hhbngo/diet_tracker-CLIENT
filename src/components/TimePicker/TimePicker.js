@@ -1,9 +1,7 @@
 import React from 'react';
 import classes from './TimePicker.module.css';
-import moment from 'moment';
 
 const TimePicker = ({time, onChange}) => {
-
     return <div className={classes.container}>
         <p>Time of meal</p>
         <form className={classes.wrapper}>

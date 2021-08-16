@@ -19,7 +19,7 @@ const Main = ({loading, entries, handleAddEntry, handleEntryClick}) => {
                     className={classes.entry_box} 
                     onClick={() => handleEntryClick(e._id)}
                     >
-                        {moment(e.createdAt).format('dddd, MMMM Do')}
+                        {moment.parseZone(e.createdAt).format('dddd, MMMM Do')}
                 </div>)}
             </div>
         }

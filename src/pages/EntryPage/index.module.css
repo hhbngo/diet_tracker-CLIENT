@@ -21,6 +21,16 @@
     margin-top: 10px;
 }
 
+.no_entries p {
+    color: rgb(130, 178, 231);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.no_entries p:hover {
+    text-decoration: underline;
+}
+
 @media all and (min-width: 1000px) {
     .wrapper {
         display: flex;
